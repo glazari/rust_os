@@ -13,11 +13,13 @@ pub extern "C" fn _start() -> ! {
     println!(", some numbers: {} {}", 42, 1.337);
     println!("One \n Two\nTree\nFour");
 
+    panic!("Some panic message");
     loop {}
 }
 
 // This function is called on panic
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
     loop {}
 }
